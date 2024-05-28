@@ -18,6 +18,8 @@ public class Runner {
 	 * @param args Name of file to interpret
 	 */
 	public static void main(String args[]) {
+		//String[] ta = {"programs/hello.cpp"};
+		//args = ta;
 		if(args.length < 1){
 			System.out.println("No args given, need file");
 			return;
@@ -41,10 +43,13 @@ public class Runner {
 		
 		System.out.println("\nFinal State:");
 		State state = Interpreter.interpret(transformed);
-		state.display( );
+		if(state != null)
+			state.display();
+		else
+			System.out.println("*** state is null");
 		
-		System.out.println("\n-------------------------------");
-		System.out.println(goodbye());
+		//System.out.println("\n-------------------------------");
+		//System.out.println(goodbye());
 	}
 	
 	/**
@@ -52,13 +57,38 @@ public class Runner {
 	 * @return None of your business
 	 */
 	private static String goodbye(){
-		String[] shutdown = { "Goodbye, cruel world!...", "See ya!...", "Later!...", "Buh-bye!...", "Thank you, come again!...",
-				"Until Next Time!...", "¡Adios, Amigo!...", "Game Over, Man! Game Over!!!...", "And So, I Bid You Adieu!...", "So Long, And Thanks For All The Fish!...",
-				"¡Ciao!...", "Y'all Come Back Now, Ya Hear?...", "Catch You Later!...", "Mahalo And Aloha!...", "Sayonara!...", "Thanks For Playing!...",
-				"Auf Wiedersehen!...", "Yo Holmes, Smell Ya Later!... (Looked Up At My Kingdom, I Was Finally There, To Sit On My Throne As The Prince Of Bel-air)",
-				"Shop Smart, Shop S-Mart!...", "Good Night, And Good Luck!...", "Keep Your Stick On The Ice!...",
-				"Omnia Extares!...", "C'est la vie!...", "See you on the flip side!...", "Toodle-oo!...", "Ta ta (For Now)!...", "¡Hasta La Vista, Baby!...",
-				"Komapsumnida!...", "...!olleH", "Live Long And Prosper!...", "Cheerio!...", "Peace Out!...", "Arrivederci!..."};
+		String[] shutdown = { 
+				"Goodbye, cruel world!...", 
+				"See ya!...",
+				"Later!...", 
+				"Buh-bye!...", 
+				"Thank you, come again!...",
+				"Until Next Time!...", 
+				"ï¿½Adios, Amigo!...", 
+				"Game Over, Man! Game Over!!!...", 
+				"And So, I Bid You Adieu!...", 
+				"So Long, And Thanks For All The Fish!...",
+				"ï¿½Ciao!...", "Y'all Come Back Now, Ya Hear?...", 
+				"Catch You Later!...", 
+				"Mahalo And Aloha!...", 
+				"Sayonara!...", 
+				"Thanks For Playing!...",
+				"Auf Wiedersehen!...", 
+				"Yo Holmes, Smell Ya Later!... (Looked Up At My Kingdom, I Was Finally There, To Sit On My Throne As The Prince Of Bel-air)",
+				"Shop Smart, Shop S-Mart!...", 
+				"Good Night, And Good Luck!...", 
+				"Keep Your Stick On The Ice!...",
+				"Omnia Extares!...", 
+				"C'est la vie!...", 
+				"See you on the flip side!...", 
+				"Toodle-oo!...",
+				"Ta ta (For Now)!...",
+				"ï¿½Hasta La Vista, Baby!...",
+				"Komapsumnida!...", 
+				"...!olleH", "Live Long And Prosper!...", 
+				"Cheerio!...", 
+				"Peace Out!...", 
+				"Arrivederci!..."};
 		
 		return shutdown[new Random().nextInt(shutdown.length)];
 	}

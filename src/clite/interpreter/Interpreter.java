@@ -78,6 +78,24 @@ public class Interpreter {
 			return interpret((Block) s, funcs, state);
 		if(s instanceof Call)
 			return interpretCallStatement((Call)s, funcs, state);
+		if(s instanceof Return) {
+			Return r = (Return)s;
+			Expression exp = r.result();
+			if(exp instanceof IntValue) {
+				Variable v = new Variable("return");
+				state.put(v, (IntValue)exp);
+			}
+			else if(exp instanceof Variable) {
+				//Variable v = new Variable("return");
+				//Variable ret = (Variable)exp;
+				//state.put(exp, exp);
+				//System.out.println(state);
+				//System.out.println(v);
+				//System.out.println(ret);
+			}
+			return state;
+		}
+			
 		throw new IllegalArgumentException("should never reach here");
 	}
 
